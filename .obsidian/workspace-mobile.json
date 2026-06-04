@@ -1,0 +1,212 @@
+{
+  "main": {
+    "id": "a0b47a878065014f",
+    "type": "split",
+    "children": [
+      {
+        "id": "e9f71af253b4e7cd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b62a214ec115ffa0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "52-Neo4j-Graph-Schema/MASTER-GRAPH-SCHEMA.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MASTER-GRAPH-SCHEMA"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "076893d19093843d",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "7cf7c138e3d1b21e",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "e21f7fc175cf1a4e",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "28e6b4b401057cff",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "9757774d3c5d5c8f",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "All properties"
+        }
+      },
+      {
+        "id": "d11721d701d0da56",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "e09f4732896c2fdc",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "03708c067d350683",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "00-Governance/FOUNDATION-DRAFT-001.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "72b3e47b0d3aa069",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "00-Governance/FOUNDATION-DRAFT-001.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "e5da98ea19cfe5cb",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "00-Governance/FOUNDATION-DRAFT-001.md",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "publish:Publish changes...": false,
+      "workspaces:Manage workspace layouts": false
+    }
+  },
+  "active": "b62a214ec115ffa0",
+  "lastOpenFiles": [
+    "09-Decisions/ADR-036-NEO4J-GRAPH-SCHEMA.md",
+    "52-Neo4j-Graph-Schema/MASTER-GRAPH-SCHEMA.md",
+    "52-Neo4j-Graph-Schema",
+    "51-Database-Schema-Design/DBSCHEMA-003-ORGANIZATIONS.sql.md",
+    "51-Database-Schema-Design/DBSCHEMA-002-CORE-CONVENTIONS.md",
+    "51-Database-Schema-Design/DBSCHEMA-001-OVERVIEW.md",
+    "51-Database-Schema-Design",
+    "09-Decisions/ADR-034-PRODUCT-MASTER-BLUEPRINT.md",
+    "50-Product-Master-Blueprint/MASTER-003-DEVELOPMENT-HANDOFF.md",
+    "50-Product-Master-Blueprint/MASTER-002-ROADMAP-SUMMARY.md",
+    "50-Product-Master-Blueprint/MASTER-001-PRODUCT-BLUEPRINT.md",
+    "50-Product-Master-Blueprint",
+    "09-Decisions/ADR-033-ENTERPRISE-SCALE.md",
+    "49-Enterprise-Scale-Architecture/ENT-018-MVP-TO-ENTERPRISE-PATH.md",
+    "49-Enterprise-Scale-Architecture/ENT-017-ENTERPRISE-AI.md",
+    "49-Enterprise-Scale-Architecture/ENT-016-FEATURE-FLAGS.md",
+    "49-Enterprise-Scale-Architecture/ENT-015-SUPPORT-OPERATIONS.md",
+    "49-Enterprise-Scale-Architecture/ENT-014-ENTERPRISE-SECURITY.md",
+    "49-Enterprise-Scale-Architecture/ENT-013-INTEGRATION-SCALE.md",
+    "49-Enterprise-Scale-Architecture/ENT-012-AUTOMATION-SCALE.md",
+    "49-Enterprise-Scale-Architecture/ENT-011-DOCUMENT-SCALE.md",
+    "49-Enterprise-Scale-Architecture/ENT-010-PERFORMANCE-SCALING.md",
+    "49-Enterprise-Scale-Architecture/ENT-009-DATA-WAREHOUSE.md",
+    "49-Enterprise-Scale-Architecture/ENT-008-ENTERPRISE-REPORTING.md",
+    "49-Enterprise-Scale-Architecture/ENT-007-ADVANCED-PERMISSIONS.md",
+    "49-Enterprise-Scale-Architecture/ENT-006-MULTI-STATE-COMPLIANCE.md",
+    "49-Enterprise-Scale-Architecture/ENT-005-REGIONAL-OPERATIONS.md",
+    "49-Enterprise-Scale-Architecture/ENT-004-PORTFOLIO-SCALING.md",
+    "49-Enterprise-Scale-Architecture/ENT-003-ORGANIZATION-HIERARCHY.md",
+    "49-Enterprise-Scale-Architecture",
+    "48-AI-Intelligence-Engine",
+    "47-Reporting-Analytics",
+    "46-Compliance-Automation",
+    "45-Financial-Management",
+    "44-Maintenance-System",
+    "43-Inspection-System"
+  ]
+}

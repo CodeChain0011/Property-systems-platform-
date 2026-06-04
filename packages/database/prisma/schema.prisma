@@ -1,0 +1,207 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RecordStatus {
+  active
+  inactive
+  archived
+}
+
+enum RoleType {
+  owner
+  administrator
+  property_manager
+  leasing_agent
+  maintenance_coordinator
+  tenant
+  vendor
+  inspector
+  accountant
+  attorney
+}
+
+enum OccupancyStatus {
+  vacant
+  occupied
+  notice_given
+  maintenance_hold
+}
+
+enum LeaseStatus {
+  draft
+  active
+  expired
+  terminated
+}
+
+enum WorkOrderStatus {
+  new
+  under_review
+  assigned
+  scheduled
+  in_progress
+  waiting
+  completed
+  closed
+  cancelled
+}
+
+enum Priority {
+  low
+  medium
+  high
+  emergency
+}
+
+model Organization {
+  id               String   @id @default(uuid())
+  organizationName String
+  legalName        String?
+  organizationType String?
+  status           RecordStatus @default(active)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  people     Person[]
+  properties Property[]
+  units      Unit[]
+  roles      Role[]
+  leases     Lease[]
+}
+
+model Person {
+  id                     String   @id @default(uuid())
+  organizationId          String?
+  firstName               String?
+  lastName                String?
+  displayName             String
+  email                   String?
+  phone                   String?
+  preferredContactMethod  String?
+  status                  RecordStatus @default(active)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  organization Organization? @relation(fields: [organizationId], references: [id])
+  roles        Role[]
+  leases       Lease[] @relation("PrimaryTenant")
+}
+
+model Role {
+  id              String   @id @default(uuid())
+  organizationId  String
+  personId        String
+  roleType        RoleType
+  permissionGroup String?
+  status          RecordStatus @default(active)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  person       Person       @relation(fields: [personId], references: [id])
+}
+
+model Property {
+  id              String   @id @default(uuid())
+  organizationId  String
+  propertyName    String?
+  propertyType    String?
+  streetAddress   String
+  city            String?
+  county          String?
+  state           String?
+  postalCode      String?
+  country         String   @default("US")
+  totalUnits      Int      @default(0)
+  status          RecordStatus @default(active)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  units        Unit[]
+  leases       Lease[]
+  workOrders   WorkOrder[]
+}
+
+model Unit {
+  id              String   @id @default(uuid())
+  organizationId  String
+  propertyId      String
+  unitNumber      String
+  unitType        String?
+  bedrooms        Int?
+  bathrooms       Float?
+  squareFeet      Int?
+  marketRent      Float?
+  currentRent     Float?
+  occupancyStatus OccupancyStatus @default(vacant)
+  status          RecordStatus @default(active)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  property     Property     @relation(fields: [propertyId], references: [id])
+  leases       Lease[]
+  workOrders   WorkOrder[]
+}
+
+model Lease {
+  id                    String   @id @default(uuid())
+  organizationId         String
+  propertyId             String
+  unitId                 String
+  primaryTenantId        String?
+  leaseType              String?
+  startDate              DateTime
+  endDate                DateTime?
+  monthlyRent            Float?
+  securityDepositAmount  Float?
+  paymentDueDay          Int?
+  leaseStatus            LeaseStatus @default(draft)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  organization  Organization @relation(fields: [organizationId], references: [id])
+  property      Property     @relation(fields: [propertyId], references: [id])
+  unit          Unit         @relation(fields: [unitId], references: [id])
+  primaryTenant Person?      @relation("PrimaryTenant", fields: [primaryTenantId], references: [id])
+}
+
+model WorkOrder {
+  id                String   @id @default(uuid())
+  organizationId    String
+  propertyId        String
+  unitId            String?
+  requesterPersonId String?
+  category          String?
+  priority          Priority @default(medium)
+  status            WorkOrderStatus @default(new)
+  description       String
+  requestedDate     DateTime @default(now())
+  completedDate     DateTime?
+  estimatedCost     Float?
+  actualCost        Float?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id])
+  unit     Unit?    @relation(fields: [unitId], references: [id])
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  organizationId String?
+  actorPersonId  String?
+  actionType     String
+  entityType     String?
+  entityId       String?
+  beforeValue    Json?
+  afterValue     Json?
+  sourceIp       String?
+  createdAt      DateTime @default(now())
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PropOS Form 003 — Notification Trigger Map</title>
+<style>
+  @page { size: letter portrait; margin: 0.55in 0.5in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; color: #000; background: #fff; }
+
+  .form-header { border-bottom: 3px solid #000; padding-bottom: 7px; margin-bottom: 10px; }
+  .form-header h1 { font-size: 14pt; font-weight: 900; }
+  .form-header .meta { font-size: 8pt; color: #444; margin-top: 2px; }
+  .form-header .footer-line { font-size: 7.5pt; margin-top: 5px; border-top: 1px solid #ccc; padding-top: 4px; color: #555; }
+
+  .key-box { border: 1.5px solid #333; padding: 6px 10px; margin-bottom: 10px; font-size: 8pt; background: #f8f8f8; }
+  .key-box strong { font-size: 8.5pt; }
+  .key-row { display: flex; gap: 16px; margin-top: 3px; flex-wrap: wrap; }
+  .key-code { font-weight: 700; background: #e0e0e0; padding: 1px 4px; border-radius: 2px; margin-right: 2px; }
+
+  .section { margin-bottom: 12px; page-break-inside: avoid; }
+  .section-title { font-size: 10pt; font-weight: 900; background: #222; color: #fff; padding: 4px 8px; margin-bottom: 0; }
+
+  table { border-collapse: collapse; width: 100%; }
+  th { background: #444; color: #fff; font-size: 7.5pt; font-weight: 700; text-align: center; padding: 4px 2px; border: 1.5px solid #222; }
+  th.label { text-align: left; padding-left: 5px; }
+  td { border: 1.5px solid #555; vertical-align: middle; font-size: 8pt; }
+  td.num { background: #eee; font-weight: 700; font-size: 7pt; width: 18px; text-align: center; color: #555; }
+  td.event { text-align: left; padding: 3px 5px; background: #f5f5f5; min-width: 130px; font-size: 8pt; }
+  td.notify { padding: 3px 4px; min-width: 115px; font-size: 7.5pt; line-height: 1.6; }
+  td.channel { padding: 3px 4px; min-width: 100px; font-size: 7.5pt; line-height: 1.6; }
+  td.timing { min-width: 55px; height: 44px; }
+  td.content { text-align: left; padding: 3px 4px; min-width: 100px; }
+
+  .options { display: flex; flex-wrap: wrap; gap: 3px 8px; }
+  .opt { white-space: nowrap; }
+  .circle { display: inline-block; width: 9px; height: 9px; border: 1.5px solid #333; border-radius: 50%; margin-right: 2px; vertical-align: middle; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-header">
+  <h1>PropOS &mdash; Form 003: Notification Trigger Map</h1>
+  <div class="meta">Version 001 &nbsp;|&nbsp; Format B (HTML Print) &nbsp;|&nbsp; Print &rarr; Fill by hand &rarr; Scan &rarr; Share with Claude</div>
+  <div class="footer-line">
+    Print date: _________________________ &nbsp;&nbsp;
+    Filled by: _________________________ &nbsp;&nbsp;
+    Scan generates: <strong>57-Notification-Architecture/NOTIFICATION-TRIGGER-MAP-001.md</strong>
+  </div>
+</div>
+
+<div class="key-box">
+  <strong>How to fill:</strong>
+  <div class="key-row">
+    <span><strong>Notify</strong> — circle role abbreviations</span>
+    <span><strong>Channel</strong> — circle one or more</span>
+    <span><strong>Timing</strong> — write: IMMEDIATE · DAILY DIGEST · or e.g. "3 days before"</span>
+    <span><strong>Content</strong> — one-line summary</span>
+  </div>
+  <div class="key-row" style="margin-top:4px">
+    <span><span class="key-code">OWN</span>Owner</span>
+    <span><span class="key-code">PM</span>Property Mgr</span>
+    <span><span class="key-code">LA</span>Leasing Agent</span>
+    <span><span class="key-code">MC</span>Maint. Coord.</span>
+    <span><span class="key-code">TEN</span>Tenant</span>
+    <span><span class="key-code">VEN</span>Vendor</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">A &mdash; Lease Events</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18px">#</th>
+        <th class="label" style="width:130px">Event</th>
+        <th style="width:120px">Notify (circle)</th>
+        <th style="width:110px">Channel (circle)</th>
+        <th style="width:60px">Timing</th>
+        <th class="label">Content Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td class="event">Lease created (draft)</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">2</td><td class="event">Lease activated</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">3</td><td class="event">Expiring in 90 days</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">4</td><td class="event">Expiring in 60 days</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">5</td><td class="event">Expiring in 30 days</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">6</td><td class="event">Lease expired</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">7</td><td class="event">Lease terminated early</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">B &mdash; Rent &amp; Payment Events</div>
+  <table>
+    <thead><tr><th style="width:18px">#</th><th class="label" style="width:130px">Event</th><th style="width:120px">Notify (circle)</th><th style="width:110px">Channel (circle)</th><th style="width:60px">Timing</th><th class="label">Content Note</th></tr></thead>
+    <tbody>
+      <tr><td class="num">8</td><td class="event">Rent due reminder</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">9</td><td class="event">Rent payment received</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">10</td><td class="event">Rent payment late</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">11</td><td class="event">Rent payment failed</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">12</td><td class="event">Security deposit released</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">C &mdash; Work Order Events</div>
+  <table>
+    <thead><tr><th style="width:18px">#</th><th class="label" style="width:130px">Event</th><th style="width:120px">Notify (circle)</th><th style="width:110px">Channel (circle)</th><th style="width:60px">Timing</th><th class="label">Content Note</th></tr></thead>
+    <tbody>
+      <tr><td class="num">13</td><td class="event">Work order created</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">14</td><td class="event">Vendor assigned</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">15</td><td class="event">WO scheduled (date set)</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">16</td><td class="event">WO in progress</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">17</td><td class="event">WO completed</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">18</td><td class="event">WO cancelled</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">19</td><td class="event">Emergency WO created</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">20</td><td class="event">WO unassigned N days (N=___)</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">D &mdash; Tenant &amp; Move Events</div>
+  <table>
+    <thead><tr><th style="width:18px">#</th><th class="label" style="width:130px">Event</th><th style="width:120px">Notify (circle)</th><th style="width:110px">Channel (circle)</th><th style="width:60px">Timing</th><th class="label">Content Note</th></tr></thead>
+    <tbody>
+      <tr><td class="num">21</td><td class="event">Tenant account created</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">22</td><td class="event">Move-in confirmed</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">23</td><td class="event">Move-out notice given</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">24</td><td class="event">Move-out completed</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+      <tr><td class="num">25</td><td class="event">Document shared with tenant</td><td class="notify"><div class="options"><span class="opt"><span class="circle"></span>OWN</span><span class="opt"><span class="circle"></span>PM</span><span class="opt"><span class="circle"></span>LA</span><span class="opt"><span class="circle"></span>MC</span><span class="opt"><span class="circle"></span>TEN</span><span class="opt"><span class="circle"></span>VEN</span></div></td><td class="channel"><div class="options"><span class="opt"><span class="circle"></span>EMAIL</span><span class="opt"><span class="circle"></span>IN-APP</span><span class="opt"><span class="circle"></span>PUSH</span><span class="opt"><span class="circle"></span>SMS</span><span class="opt"><span class="circle"></span>NONE</span></div></td><td class="timing"></td><td class="content"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">E &mdash; Global Preferences</div>
+  <table>
+    <thead><tr><th style="width:18px">#</th><th class="label">Question</th><th style="width:160px; text-align:left; padding-left:6px">Answer</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td class="event" style="font-size:8.5pt">Can tenants opt out of non-critical notifications?&nbsp; Y / N</td><td style="border:1.5px solid #555; height:32px;"></td></tr>
+      <tr><td class="num">2</td><td class="event" style="font-size:8.5pt">Emergency WO notifications always forced (no opt-out)?&nbsp; Y / N</td><td style="border:1.5px solid #555; height:32px;"></td></tr>
+      <tr><td class="num">3</td><td class="event" style="font-size:8.5pt">Default channel if no preference — circle:&nbsp; EMAIL &nbsp; IN-APP &nbsp; PUSH &nbsp; SMS</td><td style="border:1.5px solid #555; height:32px;"></td></tr>
+      <tr><td class="num">4</td><td class="event" style="font-size:8.5pt">Daily digest for managers instead of per-event alerts?&nbsp; Y / N</td><td style="border:1.5px solid #555; height:32px;"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PropOS Form 004 — Field Validation Rules</title>
+<style>
+  @page { size: letter portrait; margin: 0.55in 0.5in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; color: #000; background: #fff; }
+
+  .form-header { border-bottom: 3px solid #000; padding-bottom: 7px; margin-bottom: 10px; }
+  .form-header h1 { font-size: 14pt; font-weight: 900; }
+  .form-header .meta { font-size: 8pt; color: #444; margin-top: 2px; }
+  .form-header .footer-line { font-size: 7.5pt; margin-top: 5px; border-top: 1px solid #ccc; padding-top: 4px; color: #555; }
+
+  .key-box { border: 1.5px solid #333; padding: 5px 10px; margin-bottom: 10px; font-size: 8pt; background: #f8f8f8; }
+  .key-row { display: flex; gap: 18px; margin-top: 3px; }
+  .key-code { font-weight: 700; background: #e0e0e0; padding: 1px 4px; border-radius: 2px; margin-right: 2px; }
+
+  .section { margin-bottom: 12px; page-break-inside: avoid; }
+  .section-title { font-size: 10pt; font-weight: 900; background: #222; color: #fff; padding: 4px 8px; margin-bottom: 0; }
+
+  table { border-collapse: collapse; width: 100%; }
+  th { background: #444; color: #fff; font-size: 8pt; font-weight: 700; text-align: left; padding: 4px 5px; border: 1.5px solid #222; }
+  th.center { text-align: center; }
+  td { border: 1.5px solid #555; height: 32px; vertical-align: middle; font-size: 8.5pt; }
+  td.num { background: #eee; font-weight: 700; font-size: 7pt; width: 20px; text-align: center; color: #555; }
+  td.field { text-align: left; padding: 3px 6px; background: #f5f5f5; font-weight: 600; font-size: 8.5pt; min-width: 110px; }
+  td.req { text-align: center; font-size: 8.5pt; min-width: 42px; }
+  td.fmt { text-align: left; padding: 3px 5px; min-width: 130px; }
+  td.rule { text-align: left; padding: 3px 5px; }
+
+  .yn { font-size: 8.5pt; color: #444; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-header">
+  <h1>PropOS &mdash; Form 004: Field Validation Rules</h1>
+  <div class="meta">Version 001 &nbsp;|&nbsp; Format B (HTML Print) &nbsp;|&nbsp; Print &rarr; Fill by hand &rarr; Scan &rarr; Share with Claude</div>
+  <div class="footer-line">
+    Print date: _________________________ &nbsp;&nbsp;
+    Filled by: _________________________ &nbsp;&nbsp;
+    Scan generates: <strong>10-Requirements/FIELD-VALIDATION-RULES-001.md</strong>
+  </div>
+</div>
+
+<div class="key-box">
+  <strong>How to fill:</strong>
+  <div class="key-row">
+    <span><span class="key-code">Req?</span> Circle Y or N</span>
+    <span><span class="key-code">Format</span> Write constraint (e.g. "email format" · "1–28" · "positive only" · "max 500 chars")</span>
+    <span><span class="key-code">Business Rule</span> Logic beyond format (e.g. "must be after start date" · "cannot change once active")</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">A &mdash; Organization</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:120px">Field</th><th class="center" style="width:44px">Req?</th><th style="width:150px">Format / Allowed Values</th><th>Business Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td class="field">organizationName</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">2</td><td class="field">legalName</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">3</td><td class="field">organizationType</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">B &mdash; Person</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:120px">Field</th><th class="center" style="width:44px">Req?</th><th style="width:150px">Format / Allowed Values</th><th>Business Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">4</td><td class="field">firstName</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">5</td><td class="field">lastName</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">6</td><td class="field">displayName</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">7</td><td class="field">email</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Valid format? &nbsp;Y / N</td><td class="rule"></td></tr>
+      <tr><td class="num">8</td><td class="field">phone</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Format accepted: ____________</td><td class="rule"></td></tr>
+      <tr><td class="num">9</td><td class="field">preferredContactMethod</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Allowed values: ____________</td><td class="rule"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">C &mdash; Property</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:120px">Field</th><th class="center" style="width:44px">Req?</th><th style="width:150px">Format / Allowed Values</th><th>Business Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">10</td><td class="field">propertyName</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">11</td><td class="field">propertyType</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Allowed values: ____________</td><td class="rule"></td></tr>
+      <tr><td class="num">12</td><td class="field">streetAddress</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">13</td><td class="field">city</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+      <tr><td class="num">14</td><td class="field">state</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">2-letter code? &nbsp;Y / N</td><td class="rule"></td></tr>
+      <tr><td class="num">15</td><td class="field">postalCode</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Format: _________________</td><td class="rule"></td></tr>
+      <tr><td class="num">16</td><td class="field">totalUnits</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">min: ______ &nbsp; max: ________</td><td class="rule"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">D &mdash; Unit</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:120px">Field</th><th class="center" style="width:44px">Req?</th><th style="width:150px">Format / Allowed Values</th><th>Business Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">17</td><td class="field">unitNumber</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Unique within property? &nbsp;Y / N</td></tr>
+      <tr><td class="num">18</td><td class="field">unitType</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Allowed values: ____________</td><td class="rule"></td></tr>
+      <tr><td class="num">19</td><td class="field">bedrooms</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">min: ______ &nbsp; max: ________</td><td class="rule"></td></tr>
+      <tr><td class="num">20</td><td class="field">bathrooms</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">0.5 increments OK? &nbsp;Y / N</td><td class="rule"></td></tr>
+      <tr><td class="num">21</td><td class="field">squareFeet</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">min: ______ &nbsp; max: ________</td><td class="rule"></td></tr>
+      <tr><td class="num">22</td><td class="field">marketRent</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Can be 0? &nbsp;Y / N</td><td class="rule"></td></tr>
+      <tr><td class="num">23</td><td class="field">currentRent</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Can be 0? &nbsp;Y / N</td><td class="rule"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">E &mdash; Lease</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:130px">Field</th><th class="center" style="width:44px">Req?</th><th style="width:150px">Format / Allowed Values</th><th>Business Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">24</td><td class="field">leaseType</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Allowed values: ____________</td><td class="rule"></td></tr>
+      <tr><td class="num">25</td><td class="field">startDate</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Can be in the past? &nbsp;Y / N</td></tr>
+      <tr><td class="num">26</td><td class="field">endDate</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Min gap after startDate: _______</td></tr>
+      <tr><td class="num">27</td><td class="field">monthlyRent</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Can be 0? &nbsp;Y / N</td><td class="rule"></td></tr>
+      <tr><td class="num">28</td><td class="field">securityDepositAmount</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Can be 0? &nbsp;Y / N</td><td class="rule">Max = N &times; rent? &nbsp;N = ______</td></tr>
+      <tr><td class="num">29</td><td class="field">paymentDueDay</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">min: ______ &nbsp; max: ________</td><td class="rule"></td></tr>
+      <tr><td class="num">30</td><td class="field">primaryTenantId</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Must have active role? &nbsp;Y / N</td></tr>
+      <tr><td class="num">31</td><td class="field" style="font-style:italic; font-weight:400">Two active leases on same unit?</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">F &mdash; Work Order</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:120px">Field</th><th class="center" style="width:44px">Req?</th><th style="width:150px">Format / Allowed Values</th><th>Business Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">32</td><td class="field">description</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">min: ____ max: ____ chars</td><td class="rule"></td></tr>
+      <tr><td class="num">33</td><td class="field">category</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">Fixed list? &nbsp;Y / N &nbsp; values: _____</td><td class="rule"></td></tr>
+      <tr><td class="num">34</td><td class="field">priority</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt">low / medium / high / emergency</td><td class="rule">Who sets "emergency"? __________</td></tr>
+      <tr><td class="num">35</td><td class="field">unitId</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Required for tenant submits? &nbsp;Y / N</td></tr>
+      <tr><td class="num">36</td><td class="field">estimatedCost</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Required before assigning vendor? &nbsp;Y / N</td></tr>
+      <tr><td class="num">37</td><td class="field">actualCost</td><td class="req"><span class="yn">Y / N</span></td><td class="fmt"></td><td class="rule">Required before closing? &nbsp;Y / N</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">G &mdash; Dashboard KPI Definitions</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="width:130px">KPI</th><th>Definition — circle your choice or write your own</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="num">38</td>
+        <td class="field">Occupancy Rate</td>
+        <td class="rule" style="height:38px">Units with occupancyStatus="occupied" &divide; total active units &nbsp;&nbsp;<strong>OR</strong>&nbsp;&nbsp; active leases &divide; total units &nbsp;&nbsp; Circle: &nbsp;<strong>STATUS-BASED</strong> &nbsp;/&nbsp; <strong>LEASE-BASED</strong></td>
+      </tr>
+      <tr>
+        <td class="num">39</td>
+        <td class="field">Monthly Revenue</td>
+        <td class="rule" style="height:38px">Sum of monthlyRent on all active leases &nbsp;&nbsp;<strong>OR</strong>&nbsp;&nbsp; payments collected this month &nbsp;&nbsp; Circle: &nbsp;<strong>EXPECTED</strong> &nbsp;/&nbsp; <strong>COLLECTED</strong></td>
+      </tr>
+      <tr>
+        <td class="num">40</td>
+        <td class="field">Open Work Orders</td>
+        <td class="rule" style="height:38px">Status NOT IN (completed, closed, cancelled) &nbsp;&nbsp; Confirm or change: ________________________________</td>
+      </tr>
+      <tr>
+        <td class="num">41</td>
+        <td class="field">Expiring Leases</td>
+        <td class="rule" style="height:38px">Show leases expiring within _______ days</td>
+      </tr>
+      <tr>
+        <td class="num">42</td>
+        <td class="field">Vacant Units</td>
+        <td class="rule" style="height:38px">Units where occupancyStatus = "vacant" &nbsp;&nbsp; Confirm or change: ________________________________</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">H &mdash; Notes</div>
+  <table>
+    <thead><tr><th style="width:20px">#</th><th style="text-align:left; padding-left:5px">Any other validation or business rule not covered above</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td style="height:36px; border:1.5px solid #555; padding:3px 5px;"></td></tr>
+      <tr><td class="num">2</td><td style="height:36px; border:1.5px solid #555; padding:3px 5px;"></td></tr>
+      <tr><td class="num">3</td><td style="height:36px; border:1.5px solid #555; padding:3px 5px;"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
