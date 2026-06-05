@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
+import { OrganizationsModule } from './organizations/organizations.module';
 import { HealthController } from './health/health.controller';
 import { DatabaseService } from './database/database.service';
-import { OrganizationsController } from './organizations/organizations.controller';
 import { PropertiesController } from './properties/properties.controller';
 import { PropertiesService } from './properties/properties.service';
 import { WorkOrdersController } from './work-orders/work-orders.controller';
@@ -14,11 +14,10 @@ import { LeasesController } from './leases/leases.controller';
 import { LeasesService } from './leases/leases.service';
 
 @Module({
-  imports: [PrismaModule, AuthModule],
+  imports: [PrismaModule, AuthModule, OrganizationsModule],
   controllers: [
     AppController,
     HealthController,
-    OrganizationsController,
     PropertiesController,
     WorkOrdersController,
     LeasesController,
