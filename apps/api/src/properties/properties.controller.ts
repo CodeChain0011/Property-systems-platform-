@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Query } from '@nestjs/common';
 import { PropertiesService } from './properties.service';
 
 @Controller('properties')
@@ -6,26 +6,22 @@ export class PropertiesController {
   constructor(private readonly propertiesService: PropertiesService) {}
 
   @Get()
-  findAll() {
-    return { data: this.propertiesService.findAll() };
+  async findAll(@Query('organizationId') organizationId?: string) {
+    return { data: await this.propertiesService.findAll(organizationId) };
   }
 
   @Get('summary')
-  getSummary() {
-    return { data: this.propertiesService.getSummary() };
+  async getSummary(@Query('organizationId') organizationId?: string) {
+    return { data: await this.propertiesService.getSummary(organizationId) };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    const property = this.propertiesService.findOne(id);
-    if (!property) {
-      return { error: 'Property not found' };
-    }
-    return { data: property };
+  async findOne(@Param('id') id: string) {
+    return { data: await this.propertiesService.findOne(id) };
   }
 
   @Post()
-  create(@Body() body: Parameters<PropertiesService['create']>[0]) {
-    return { data: this.propertiesService.create(body) };
+  async create(@Body() body: Parameters<PropertiesService['create']>[0]) {
+    return { data: await this.propertiesService.create(body) };
   }
 }

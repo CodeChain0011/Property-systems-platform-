@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { OrganizationsModule } from './organizations/organizations.module';
 import { HealthController } from './health/health.controller';
-import { OrganizationsController } from './organizations/organizations.controller';
+import { DatabaseService } from './database/database.service';
 import { PropertiesController } from './properties/properties.controller';
 import { PropertiesService } from './properties/properties.service';
 import { WorkOrdersController } from './work-orders/work-orders.controller';
@@ -11,15 +14,20 @@ import { LeasesController } from './leases/leases.controller';
 import { LeasesService } from './leases/leases.service';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule, AuthModule, OrganizationsModule],
   controllers: [
     AppController,
     HealthController,
-    OrganizationsController,
     PropertiesController,
     WorkOrdersController,
     LeasesController,
   ],
-  providers: [AppService, PropertiesService, WorkOrdersService, LeasesService],
+  providers: [
+    AppService,
+    DatabaseService,
+    PropertiesService,
+    WorkOrdersService,
+    LeasesService,
+  ],
 })
 export class AppModule {}

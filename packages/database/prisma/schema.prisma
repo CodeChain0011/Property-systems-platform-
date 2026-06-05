@@ -59,13 +59,13 @@ enum Priority {
 }
 
 model Organization {
-  id               String   @id @default(uuid())
+  id               String       @id @default(uuid())
   organizationName String
   legalName        String?
   organizationType String?
   status           RecordStatus @default(active)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
 
   people     Person[]
   properties Property[]
@@ -75,39 +75,55 @@ model Organization {
 }
 
 model Person {
-  id                     String   @id @default(uuid())
-  organizationId          String?
-  firstName               String?
-  lastName                String?
-  displayName             String
-  email                   String?
-  phone                   String?
-  preferredContactMethod  String?
-  status                  RecordStatus @default(active)
-  createdAt               DateTime @default(now())
-  updatedAt               DateTime @updatedAt
+  id                    String       @id @default(uuid())
+  organizationId        String?
+  firstName             String?
+  lastName              String?
+  displayName           String
+  email                 String?
+  phone                 String?
+  preferredContactMethod String?
+  passwordHash          String?
+  status                RecordStatus @default(active)
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
 
-  organization Organization? @relation(fields: [organizationId], references: [id])
-  roles        Role[]
-  leases       Lease[] @relation("PrimaryTenant")
+  organization  Organization?  @relation(fields: [organizationId], references: [id])
+  roles         Role[]
+  leases        Lease[]        @relation("PrimaryTenant")
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id         String    @id @default(uuid())
+  personId   String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  lastUsedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  person Person @relation(fields: [personId], references: [id])
+
+  @@index([personId])
 }
 
 model Role {
-  id              String   @id @default(uuid())
+  id              String       @id @default(uuid())
   organizationId  String
   personId        String
   roleType        RoleType
   permissionGroup String?
   status          RecordStatus @default(active)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
 
   organization Organization @relation(fields: [organizationId], references: [id])
   person       Person       @relation(fields: [personId], references: [id])
 }
 
 model Property {
-  id              String   @id @default(uuid())
+  id              String       @id @default(uuid())
   organizationId  String
   propertyName    String?
   propertyType    String?
@@ -116,11 +132,11 @@ model Property {
   county          String?
   state           String?
   postalCode      String?
-  country         String   @default("US")
-  totalUnits      Int      @default(0)
+  country         String       @default("US")
+  totalUnits      Int          @default(0)
   status          RecordStatus @default(active)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
 
   organization Organization @relation(fields: [organizationId], references: [id])
   units        Unit[]
@@ -129,7 +145,7 @@ model Property {
 }
 
 model Unit {
-  id              String   @id @default(uuid())
+  id              String          @id @default(uuid())
   organizationId  String
   propertyId      String
   unitNumber      String
@@ -140,9 +156,9 @@ model Unit {
   marketRent      Float?
   currentRent     Float?
   occupancyStatus OccupancyStatus @default(vacant)
-  status          RecordStatus @default(active)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  status          RecordStatus    @default(active)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
 
   organization Organization @relation(fields: [organizationId], references: [id])
   property     Property     @relation(fields: [propertyId], references: [id])
@@ -151,20 +167,20 @@ model Unit {
 }
 
 model Lease {
-  id                    String   @id @default(uuid())
-  organizationId         String
-  propertyId             String
-  unitId                 String
-  primaryTenantId        String?
-  leaseType              String?
-  startDate              DateTime
-  endDate                DateTime?
-  monthlyRent            Float?
-  securityDepositAmount  Float?
-  paymentDueDay          Int?
-  leaseStatus            LeaseStatus @default(draft)
-  createdAt              DateTime @default(now())
-  updatedAt              DateTime @updatedAt
+  id                   String      @id @default(uuid())
+  organizationId       String
+  propertyId           String
+  unitId               String
+  primaryTenantId      String?
+  leaseType            String?
+  startDate            DateTime
+  endDate              DateTime?
+  monthlyRent          Float?
+  securityDepositAmount Float?
+  paymentDueDay        Int?
+  leaseStatus          LeaseStatus @default(draft)
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
 
   organization  Organization @relation(fields: [organizationId], references: [id])
   property      Property     @relation(fields: [propertyId], references: [id])
@@ -173,28 +189,28 @@ model Lease {
 }
 
 model WorkOrder {
-  id                String   @id @default(uuid())
+  id                String          @id @default(uuid())
   organizationId    String
   propertyId        String
   unitId            String?
   requesterPersonId String?
   category          String?
-  priority          Priority @default(medium)
+  priority          Priority        @default(medium)
   status            WorkOrderStatus @default(new)
   description       String
-  requestedDate     DateTime @default(now())
+  requestedDate     DateTime        @default(now())
   completedDate     DateTime?
   estimatedCost     Float?
   actualCost        Float?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 
   property Property @relation(fields: [propertyId], references: [id])
   unit     Unit?    @relation(fields: [unitId], references: [id])
 }
 
 model AuditLog {
-  id            String   @id @default(uuid())
+  id             String   @id @default(uuid())
   organizationId String?
   actorPersonId  String?
   actionType     String

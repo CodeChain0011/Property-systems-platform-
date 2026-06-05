@@ -2,176 +2,137 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PropOS Form 002 — Permission Matrix</title>
+<title>Form 002 – Permission Matrix</title>
 <style>
-  @page { size: letter portrait; margin: 0.55in 0.5in; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, Helvetica, sans-serif; font-size: 9.5pt; color: #000; background: #fff; }
-
-  .form-header { border-bottom: 3px solid #000; padding-bottom: 8px; margin-bottom: 12px; }
-  .form-header h1 { font-size: 14pt; font-weight: 900; }
-  .form-header .meta { font-size: 8pt; color: #444; margin-top: 3px; }
-  .form-header .footer-line { font-size: 8pt; margin-top: 5px; border-top: 1px solid #ccc; padding-top: 4px; color: #555; }
-
-  .key-box { border: 1.5px solid #333; padding: 6px 10px; margin-bottom: 10px; font-size: 8.5pt; background: #f8f8f8; display: flex; gap: 30px; align-items: flex-start; }
-  .key-section strong { display: block; font-size: 9pt; margin-bottom: 3px; }
-  .key-row { display: flex; gap: 14px; flex-wrap: wrap; }
-  .key-code { font-weight: 700; background: #e0e0e0; padding: 1px 5px; border-radius: 2px; margin-right: 3px; }
-
-  .section { margin-bottom: 14px; page-break-inside: avoid; }
-  .section-title { font-size: 10.5pt; font-weight: 900; background: #222; color: #fff; padding: 4px 8px; margin-bottom: 0; }
-
-  table { border-collapse: collapse; width: 100%; }
-  th { background: #444; color: #fff; font-size: 8pt; font-weight: 700; text-align: center; padding: 4px 2px; border: 1.5px solid #222; }
-  th.action-col { text-align: left; padding-left: 5px; width: 30px; }
-  th.label-col { text-align: left; padding-left: 5px; }
-  td { border: 1.5px solid #555; height: 30px; text-align: center; vertical-align: middle; font-size: 8.5pt; }
-  td.num { background: #eee; font-weight: 700; font-size: 7.5pt; width: 20px; color: #555; }
-  td.action { text-align: left; padding: 3px 5px; font-size: 8.5pt; background: #f5f5f5; }
-  td.cell { background: #fff; min-width: 28px; }
-
-  @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; }
+@page { size: letter portrait; margin: 0.75in; }
+h1 { font-size: 13pt; font-weight: bold; }
+h2 { font-size: 11pt; margin: 14px 0 6px; border-bottom: 2px solid #000; padding-bottom: 3px; }
+.header { border: 2px solid #000; padding: 8px 12px; margin-bottom: 14px; }
+.header-sub { font-size: 10pt; color: #333; margin-top: 2px; }
+.instructions { background: #f5f5f5; border: 1px solid #999; padding: 8px 10px; margin-bottom: 14px; font-size: 9pt; }
+.role-key { margin-top: 5px; font-size: 8.5pt; }
+.role-key span { display: inline-block; background: #e8e8e8; border: 1px solid #bbb; padding: 1px 5px; margin: 2px 3px 2px 0; font-family: monospace; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+th { background: #ddd; border: 1px solid #000; padding: 4px 3px; text-align: center; font-size: 8pt; font-weight: bold; }
+td { border: 1px solid #000; padding: 4px 5px; vertical-align: middle; font-size: 9pt; }
+td.action { background: #f5f5f5; width: 42%; }
+td.w { text-align: center; min-height: 22px; }
+.page-break { page-break-before: always; padding-top: 10px; }
+.notes-box { border: 1px solid #000; min-height: 100px; padding: 6px; margin-bottom: 14px; }
+.footer { margin-top: 24px; border-top: 1px solid #000; padding-top: 8px; font-size: 8.5pt; display: flex; justify-content: space-between; }
+.line { display: inline-block; width: 160px; border-bottom: 1px solid #000; margin-left: 4px; }
 </style>
 </head>
 <body>
 
-<div class="form-header">
-  <h1>PropOS &mdash; Form 002: Permission Matrix</h1>
-  <div class="meta">Version 001 &nbsp;|&nbsp; Format B (HTML Print) &nbsp;|&nbsp; Print &rarr; Fill by hand &rarr; Scan &rarr; Share with Claude</div>
-  <div class="footer-line">
-    Print date: _________________________ &nbsp;&nbsp;
-    Filled by: _________________________ &nbsp;&nbsp;
-    Scan generates: <strong>55-Permission-Matrix/PERMISSION-MATRIX-TABLE-001.md</strong>
+<div class="header">
+  <h1>PROPERTY OPERATING SYSTEM — DECISION FORM</h1>
+  <div class="header-sub">FORM 002: PERMISSION MATRIX &nbsp;|&nbsp; Version 001</div>
+  <div class="header-sub">Print &middot; Fill by hand &middot; Scan and share with Claude</div>
+</div>
+
+<div class="instructions">
+  <strong>How to use:</strong> For each row mark each role column with:
+  &nbsp;<strong>Y</strong> = always allowed &nbsp;&nbsp;<strong>N</strong> = not allowed &nbsp;&nbsp;<strong>O</strong> = own records only &nbsp;&nbsp;<strong>A</strong> = with approval
+  <div class="role-key">
+    <span>OWN = Owner/Admin</span><span>PM = Property Manager</span><span>LA = Leasing Agent</span>
+    <span>MC = Maint. Coord.</span><span>TEN = Tenant</span><span>VEN = Vendor</span>
+    <span>INS = Inspector</span><span>ACC = Accountant</span><span>ATT = Attorney</span>
   </div>
 </div>
 
-<div class="key-box">
-  <div class="key-section">
-    <strong>Cell Values</strong>
-    <div class="key-row">
-      <span><span class="key-code">Y</span> Always allowed</span>
-      <span><span class="key-code">N</span> Not allowed</span>
-      <span><span class="key-code">O</span> Own records only</span>
-      <span><span class="key-code">A</span> Requires approval</span>
-    </div>
-  </div>
-  <div class="key-section">
-    <strong>Role Columns</strong>
-    <div class="key-row">
-      <span><span class="key-code">OWN</span> Owner/Admin</span>
-      <span><span class="key-code">PM</span> Property Manager</span>
-      <span><span class="key-code">LA</span> Leasing Agent</span>
-      <span><span class="key-code">MC</span> Maint. Coord.</span>
-      <span><span class="key-code">TEN</span> Tenant</span>
-      <span><span class="key-code">VEN</span> Vendor</span>
-      <span><span class="key-code">INS</span> Inspector</span>
-      <span><span class="key-code">ACC</span> Accountant</span>
-      <span><span class="key-code">ATT</span> Attorney</span>
-    </div>
-  </div>
+<h2>SECTION A &mdash; ORGANIZATION &amp; PEOPLE</h2>
+<table>
+  <thead><tr><th style="text-align:left;width:42%">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
+  <tbody>
+    <tr><td class="action">View organization settings</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Edit organization settings</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Create a person record</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View any person record</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Edit any person record</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View own person / profile record</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Assign / change a role</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Deactivate a person</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody>
+</table>
+
+<h2>SECTION B &mdash; PROPERTIES &amp; UNITS</h2>
+<table>
+  <thead><tr><th style="text-align:left;width:42%">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
+  <tbody>
+    <tr><td class="action">Create a property</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View any property</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Edit property details</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Archive / deactivate a property</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Create a unit</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View any unit</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View own unit (tenant&rsquo;s unit only)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Edit unit details / set market rent</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Change unit occupancy status</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody>
+</table>
+
+<div class="page-break">
+<h2>SECTION C &mdash; LEASES</h2>
+<table>
+  <thead><tr><th style="text-align:left;width:42%">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
+  <tbody>
+    <tr><td class="action">Create a lease (draft)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Edit a lease in draft</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Activate a lease</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View any lease</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View own lease (tenant only)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Terminate an active lease early</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Renew / extend a lease</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View lease financial terms (rent)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody>
+</table>
+
+<h2>SECTION D &mdash; WORK ORDERS &amp; MAINTENANCE</h2>
+<table>
+  <thead><tr><th style="text-align:left;width:42%">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
+  <tbody>
+    <tr><td class="action">Create a work order</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View all work orders</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View own submitted work orders</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View assigned work orders (vendor)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Assign a vendor to a work order</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Update work order status</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Close / cancel a work order</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Set / edit estimated cost</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Mark actual cost / submit invoice</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody>
+</table>
 </div>
 
-<div class="section">
-  <div class="section-title">A &mdash; Organization &amp; People</div>
-  <table>
-    <thead><tr><th class="action-col">#</th><th class="label-col">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
-    <tbody>
-      <tr><td class="num">1</td><td class="action">View organization settings</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">2</td><td class="action">Edit organization settings</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">3</td><td class="action">Create a person record</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">4</td><td class="action">View any person record</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">5</td><td class="action">Edit any person record</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">6</td><td class="action">View own profile record</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">7</td><td class="action">Assign / change a role</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">8</td><td class="action">Deactivate a person</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-    </tbody>
-  </table>
+<div class="page-break">
+<h2>SECTION E &mdash; DOCUMENTS &amp; FINANCIALS</h2>
+<table>
+  <thead><tr><th style="text-align:left;width:42%">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
+  <tbody>
+    <tr><td class="action">Upload a document</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View any document</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View own documents (tenant)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Delete a document</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Log a financial transaction</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View all financial transactions</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View own payment history (tenant)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">Release security deposit</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="action">View dashboard / portfolio reports</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody>
+</table>
+
+<h2>SECTION F &mdash; NOTES AND EXCEPTIONS</h2>
+<p style="font-size:9pt;margin-bottom:6px;">Use this space for rules that don&rsquo;t fit the tables above:</p>
+<div class="notes-box"></div>
 </div>
 
-<div class="section">
-  <div class="section-title">B &mdash; Properties &amp; Units</div>
-  <table>
-    <thead><tr><th class="action-col">#</th><th class="label-col">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
-    <tbody>
-      <tr><td class="num">9</td><td class="action">Create a property</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">10</td><td class="action">View any property</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">11</td><td class="action">Edit property details</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">12</td><td class="action">Archive / deactivate a property</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">13</td><td class="action">Create a unit</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">14</td><td class="action">View any unit</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">15</td><td class="action">View own unit (tenant only)</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">16</td><td class="action">Edit unit / set market rent</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">17</td><td class="action">Change unit occupancy status</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="section">
-  <div class="section-title">C &mdash; Leases</div>
-  <table>
-    <thead><tr><th class="action-col">#</th><th class="label-col">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
-    <tbody>
-      <tr><td class="num">18</td><td class="action">Create a lease (draft)</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">19</td><td class="action">Edit a lease in draft</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">20</td><td class="action">Activate a lease</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">21</td><td class="action">View any lease</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">22</td><td class="action">View own lease (tenant)</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">23</td><td class="action">Terminate an active lease early</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">24</td><td class="action">Renew / extend a lease</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">25</td><td class="action">View lease financial terms</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="section">
-  <div class="section-title">D &mdash; Work Orders &amp; Maintenance</div>
-  <table>
-    <thead><tr><th class="action-col">#</th><th class="label-col">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
-    <tbody>
-      <tr><td class="num">26</td><td class="action">Create a work order</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">27</td><td class="action">View all work orders</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">28</td><td class="action">View own submitted WOs</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">29</td><td class="action">View assigned WOs (vendor)</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">30</td><td class="action">Assign a vendor to a WO</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">31</td><td class="action">Update work order status</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">32</td><td class="action">Close / cancel a work order</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">33</td><td class="action">Set / edit estimated cost</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">34</td><td class="action">Submit invoice / mark actual cost</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="section">
-  <div class="section-title">E &mdash; Documents &amp; Financials</div>
-  <table>
-    <thead><tr><th class="action-col">#</th><th class="label-col">Action</th><th>OWN</th><th>PM</th><th>LA</th><th>MC</th><th>TEN</th><th>VEN</th><th>INS</th><th>ACC</th><th>ATT</th></tr></thead>
-    <tbody>
-      <tr><td class="num">35</td><td class="action">Upload a document</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">36</td><td class="action">View any document</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">37</td><td class="action">View own documents (tenant)</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">38</td><td class="action">Delete a document</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">39</td><td class="action">Log a financial transaction</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">40</td><td class="action">View all financial transactions</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">41</td><td class="action">View own payment history (tenant)</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">42</td><td class="action">Release security deposit</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-      <tr><td class="num">43</td><td class="action">View dashboard / portfolio reports</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="section">
-  <div class="section-title">F &mdash; Notes &amp; Exceptions</div>
-  <table>
-    <thead><tr><th style="width:22px">#</th><th style="text-align:left; padding-left:6px">Note or exception that doesn't fit the table above</th></tr></thead>
-    <tbody>
-      <tr><td class="num">1</td><td style="height:38px; text-align:left; padding:4px 6px; border:1.5px solid #555;"></td></tr>
-      <tr><td class="num">2</td><td style="height:38px; text-align:left; padding:4px 6px; border:1.5px solid #555;"></td></tr>
-      <tr><td class="num">3</td><td style="height:38px; text-align:left; padding:4px 6px; border:1.5px solid #555;"></td></tr>
-      <tr><td class="num">4</td><td style="height:38px; text-align:left; padding:4px 6px; border:1.5px solid #555;"></td></tr>
-    </tbody>
-  </table>
+<div class="footer">
+  <span>Print date: <span class="line"></span></span>
+  <span>Filled by: <span class="line"></span></span>
+  <span><em>Scan and share with Claude &rarr; PERMISSION-MATRIX-TABLE-001.md</em></span>
 </div>
 
 </body>

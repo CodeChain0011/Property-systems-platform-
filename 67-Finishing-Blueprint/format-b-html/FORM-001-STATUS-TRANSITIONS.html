@@ -2,204 +2,139 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PropOS Form 001 — Status Transitions</title>
+<title>Form 001 – Status Transitions</title>
 <style>
-  @page { size: letter portrait; margin: 0.65in 0.6in; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #000; background: #fff; }
-
-  .form-header { border-bottom: 3px solid #000; padding-bottom: 8px; margin-bottom: 14px; }
-  .form-header h1 { font-size: 15pt; font-weight: 900; letter-spacing: -0.3px; }
-  .form-header .meta { font-size: 8.5pt; color: #444; margin-top: 3px; }
-  .form-header .footer-line { font-size: 8pt; margin-top: 6px; border-top: 1px solid #ccc; padding-top: 5px; color: #555; }
-
-  .key-box { border: 1.5px solid #333; padding: 7px 10px; margin-bottom: 12px; font-size: 8.5pt; background: #f8f8f8; }
-  .key-box strong { font-size: 9pt; }
-  .key-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
-  .key-item { display: flex; align-items: baseline; gap: 5px; }
-  .key-code { font-weight: 700; font-size: 9pt; background: #e8e8e8; padding: 1px 5px; border-radius: 2px; }
-
-  .section { margin-bottom: 18px; page-break-inside: avoid; }
-  .section-title { font-size: 11pt; font-weight: 900; background: #222; color: #fff; padding: 5px 10px; margin-bottom: 0; letter-spacing: 0.3px; }
-  .section-hint { font-size: 8pt; color: #555; padding: 4px 0 6px; font-style: italic; }
-
-  table { border-collapse: collapse; width: 100%; }
-  th { background: #444; color: #fff; font-size: 8.5pt; font-weight: 700; text-align: center; padding: 5px 3px; border: 1.5px solid #222; white-space: nowrap; }
-  th.row-label { text-align: left; padding-left: 6px; min-width: 110px; }
-  td { border: 1.5px solid #555; padding: 0; height: 34px; text-align: center; vertical-align: middle; font-size: 9pt; }
-  td.row-label { text-align: left; padding: 4px 6px; font-weight: 700; font-size: 8.5pt; background: #f0f0f0; white-space: nowrap; }
-  td.dash { background: #d8d8d8; color: #888; font-size: 12pt; font-weight: 300; }
-  td.write { background: #fff; min-width: 36px; }
-  td.notes { text-align: left; padding: 3px 5px; min-width: 180px; }
-  td.num { background: #f0f0f0; font-weight: 700; font-size: 8pt; width: 24px; color: #555; }
-  td.q { text-align: left; padding: 4px 6px; font-size: 9pt; }
-  td.answer { min-width: 140px; }
-
-  .page-break { page-break-before: always; }
-
-  @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .no-print { display: none; }
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; }
+@page { size: letter portrait; margin: 0.75in; }
+h1 { font-size: 13pt; font-weight: bold; }
+h2 { font-size: 11pt; margin: 14px 0 6px; border-bottom: 2px solid #000; padding-bottom: 3px; }
+h3 { font-size: 10pt; margin: 10px 0 4px; font-style: italic; }
+.header { border: 2px solid #000; padding: 8px 12px; margin-bottom: 14px; }
+.header-sub { font-size: 10pt; color: #333; margin-top: 2px; }
+.instructions { background: #f5f5f5; border: 1px solid #999; padding: 8px 10px; margin-bottom: 14px; font-size: 9pt; }
+.role-key { margin-top: 5px; font-size: 8.5pt; }
+.role-key span { display: inline-block; background: #e8e8e8; border: 1px solid #bbb; padding: 1px 5px; margin: 2px 3px 2px 0; font-family: monospace; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+th { background: #ddd; border: 1px solid #000; padding: 4px 4px; text-align: center; font-size: 8pt; font-weight: bold; }
+td { border: 1px solid #000; padding: 4px 5px; vertical-align: middle; font-size: 9pt; }
+td.row-label { background: #efefef; font-weight: bold; font-size: 8.5pt; }
+td.diag { background: #c8c8c8; text-align: center; color: #555; font-size: 9pt; }
+td.w { min-height: 22px; }
+td.wt { height: 32px; }
+.page-break { page-break-before: always; padding-top: 10px; }
+.footer { margin-top: 24px; border-top: 1px solid #000; padding-top: 8px; font-size: 8.5pt; display: flex; justify-content: space-between; }
+.line { display: inline-block; width: 160px; border-bottom: 1px solid #000; margin-left: 4px; }
 </style>
 </head>
 <body>
 
-<div class="form-header">
-  <h1>PropOS &mdash; Form 001: Status Transitions</h1>
-  <div class="meta">Version 001 &nbsp;|&nbsp; Format B (HTML Print) &nbsp;|&nbsp; Print &rarr; Fill by hand &rarr; Scan &rarr; Share with Claude</div>
-  <div class="footer-line">
-    Print date: _________________________ &nbsp;&nbsp;&nbsp;
-    Filled by: _________________________ &nbsp;&nbsp;&nbsp;
-    Scan generates: <strong>03-Workflows/STATUS-TRANSITIONS-001.md</strong>
+<div class="header">
+  <h1>PROPERTY OPERATING SYSTEM — DECISION FORM</h1>
+  <div class="header-sub">FORM 001: STATUS TRANSITIONS &nbsp;|&nbsp; Version 001</div>
+  <div class="header-sub">Print &middot; Fill by hand &middot; Scan and share with Claude</div>
+</div>
+
+<div class="instructions">
+  <strong>How to use:</strong> Write <strong>Y</strong> (allowed) or <strong>N</strong> (blocked) in each grid cell. In the Details table write role abbreviation(s) and side effects.
+  <div class="role-key">
+    <span>OWN = Owner/Admin</span><span>PM = Property Manager</span><span>LA = Leasing Agent</span>
+    <span>MC = Maint. Coord.</span><span>TEN = Tenant</span><span>VEN = Vendor</span><span>ANY = Any auth. user</span>
   </div>
 </div>
 
-<div class="key-box">
-  <strong>Cell Values:</strong>
-  <div class="key-row">
-    <span class="key-item"><span class="key-code">Y</span> Transition is allowed</span>
-    <span class="key-item"><span class="key-code">N</span> Transition is blocked</span>
-    <span class="key-item"><span class="key-code">—</span> Same state (pre-filled)</span>
-    <span class="key-item">Leave blank if unsure</span>
-  </div>
-  <div style="margin-top:6px"><strong>Role Abbreviations:</strong>
-  OWN = Owner/Admin &nbsp; PM = Property Manager &nbsp; LA = Leasing Agent &nbsp;
-  MC = Maint. Coord. &nbsp; TEN = Tenant &nbsp; VEN = Vendor</div>
+<h2>SECTION A &mdash; WORK ORDER STATUS TRANSITIONS</h2>
+<h3>Transition Grid &mdash; Row = FROM state &nbsp;&nbsp; Column = TO state</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:16%">FROM \ TO</th>
+      <th>NEW</th><th>U_REV</th><th>ASSGD</th><th>SCHED</th><th>IN_PRG</th><th>WAIT</th><th>COMPL</th><th>CLOSED</th><th>CANCL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="row-label">new</td>          <td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">under_review</td> <td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">assigned</td>     <td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">scheduled</td>    <td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">in_progress</td>  <td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">waiting</td>      <td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">completed</td>    <td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">closed</td>       <td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td></tr>
+    <tr><td class="row-label">cancelled</td>    <td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td></tr>
+  </tbody>
+</table>
+
+<h3>Work Order Transition Details</h3>
+<table>
+  <thead><tr><th style="width:42%">Transition</th><th style="width:22%">Who Can Trigger</th><th>Side Effects / Notes</th></tr></thead>
+  <tbody>
+    <tr><td>new &rarr; under_review</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>new &rarr; cancelled</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>under_review &rarr; assigned</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>under_review &rarr; cancelled</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>assigned &rarr; scheduled</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>assigned &rarr; new &nbsp;(un-assign)</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>scheduled &rarr; in_progress</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>in_progress &rarr; waiting</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>in_progress &rarr; completed</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>waiting &rarr; in_progress</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>completed &rarr; in_progress &nbsp;(reopen)</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>completed &rarr; closed</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>Other: ___________________________________________</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>Other: ___________________________________________</td><td class="wt"></td><td class="wt"></td></tr>
+  </tbody>
+</table>
+
+<div class="page-break">
+<h2>SECTION B &mdash; LEASE STATUS TRANSITIONS</h2>
+<h3>Transition Grid</h3>
+
+<table style="width:55%">
+  <thead>
+    <tr><th style="width:28%">FROM \ TO</th><th>draft</th><th>active</th><th>expired</th><th>terminated</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="row-label">draft</td>      <td class="diag">&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">active</td>     <td class="w"></td><td class="diag">&mdash;</td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="row-label">expired</td>    <td class="w"></td><td class="w"></td><td class="diag">&mdash;</td><td class="w"></td></tr>
+    <tr><td class="row-label">terminated</td> <td class="w"></td><td class="w"></td><td class="w"></td><td class="diag">&mdash;</td></tr>
+  </tbody>
+</table>
+
+<h3>Lease Transition Details</h3>
+<table>
+  <thead><tr><th style="width:42%">Transition</th><th style="width:22%">Who Can Trigger</th><th>Side Effects / Notes</th></tr></thead>
+  <tbody>
+    <tr><td>draft &rarr; active</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>draft &rarr; terminated &nbsp;(cancel draft)</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>active &rarr; expired &nbsp;(system / auto?)</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>active &rarr; terminated &nbsp;(early termination)</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>expired &rarr; active &nbsp;(renewal)</td><td class="wt"></td><td class="wt"></td></tr>
+    <tr><td>terminated &rarr; active &nbsp;(reinstate?)</td><td class="wt"></td><td class="wt"></td></tr>
+  </tbody>
+</table>
+
+<h2>SECTION C &mdash; ADDITIONAL QUESTIONS</h2>
+<table>
+  <thead><tr><th style="width:65%">Question</th><th>Your Answer</th></tr></thead>
+  <tbody>
+    <tr><td>When a lease is activated, does the unit occupancyStatus auto-update to &ldquo;occupied&rdquo;? &nbsp;<strong>Y / N</strong></td><td class="wt"></td></tr>
+    <tr><td>When a lease is terminated, does the unit auto-update to &ldquo;vacant&rdquo;? &nbsp;<strong>Y / N</strong></td><td class="wt"></td></tr>
+    <tr><td>Can two active leases exist on the same unit at once? &nbsp;<strong>Y / N</strong></td><td class="wt"></td></tr>
+    <tr><td>When a WO moves to in_progress, does the tenant get notified? &nbsp;<strong>Y / N</strong></td><td class="wt"></td></tr>
+    <tr><td>When a WO is completed: does the manager confirm/close, or auto-close after N days? &nbsp;(circle) &nbsp;<strong>CONFIRM &nbsp;/ &nbsp;AUTO</strong></td><td class="wt"></td></tr>
+    <tr><td>If AUTO, how many days until auto-close? &nbsp;N&nbsp;=&nbsp;_______</td><td class="wt"></td></tr>
+    <tr><td>Other rule I want to define: ___________________________________</td><td class="wt"></td></tr>
+  </tbody>
+</table>
 </div>
 
-<!-- SECTION A: Work Order Transition Grid -->
-<div class="section">
-  <div class="section-title">A &mdash; Work Order Transition Grid</div>
-  <div class="section-hint">Row = FROM state &nbsp;&bull;&nbsp; Column = TO state &nbsp;&bull;&nbsp; Write Y or N in each cell</div>
-  <table>
-    <thead>
-      <tr>
-        <th class="row-label">FROM \ TO</th>
-        <th>new</th>
-        <th>under_review</th>
-        <th>assigned</th>
-        <th>scheduled</th>
-        <th>in_progress</th>
-        <th>waiting</th>
-        <th>completed</th>
-        <th>closed</th>
-        <th>cancelled</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="row-label">new</td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">under_review</td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">assigned</td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">scheduled</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">in_progress</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">waiting</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">completed</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">closed</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td></tr>
-      <tr><td class="row-label">cancelled</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- SECTION B: Work Order Transition Details -->
-<div class="section">
-  <div class="section-title">B &mdash; Work Order Transition Details</div>
-  <div class="section-hint">For each Y above — who triggers it and what happens?</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:22px">#</th>
-        <th style="width:200px; text-align:left; padding-left:6px">Transition</th>
-        <th style="width:130px">Who Can Trigger</th>
-        <th class="row-label">Side Effects / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="num">1</td><td class="q">new &rarr; under_review</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">2</td><td class="q">new &rarr; cancelled</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">3</td><td class="q">under_review &rarr; assigned</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">4</td><td class="q">under_review &rarr; cancelled</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">5</td><td class="q">assigned &rarr; scheduled</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">6</td><td class="q">assigned &rarr; new (un-assign)</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">7</td><td class="q">scheduled &rarr; in_progress</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">8</td><td class="q">in_progress &rarr; waiting</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">9</td><td class="q">in_progress &rarr; completed</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">10</td><td class="q">waiting &rarr; in_progress</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">11</td><td class="q">completed &rarr; in_progress (reopen)</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">12</td><td class="q">completed &rarr; closed</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">13</td><td class="q"><em>add your own:</em></td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">14</td><td class="q"><em>add your own:</em></td><td class="write"></td><td class="notes"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- SECTION C: Lease Transition Grid -->
-<div class="section">
-  <div class="section-title">C &mdash; Lease Transition Grid</div>
-  <div class="section-hint">Row = FROM state &nbsp;&bull;&nbsp; Column = TO state &nbsp;&bull;&nbsp; Write Y or N in each cell</div>
-  <table>
-    <thead>
-      <tr>
-        <th class="row-label">FROM \ TO</th>
-        <th style="width:100px">draft</th>
-        <th style="width:100px">active</th>
-        <th style="width:100px">expired</th>
-        <th style="width:100px">terminated</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="row-label">draft</td><td class="dash">—</td><td class="write"></td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">active</td><td class="write"></td><td class="dash">—</td><td class="write"></td><td class="write"></td></tr>
-      <tr><td class="row-label">expired</td><td class="write"></td><td class="write"></td><td class="dash">—</td><td class="write"></td></tr>
-      <tr><td class="row-label">terminated</td><td class="write"></td><td class="write"></td><td class="write"></td><td class="dash">—</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- SECTION D: Lease Transition Details -->
-<div class="section">
-  <div class="section-title">D &mdash; Lease Transition Details</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:22px">#</th>
-        <th style="width:220px; text-align:left; padding-left:6px">Transition</th>
-        <th style="width:130px">Who Can Trigger</th>
-        <th class="row-label">Side Effects / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="num">1</td><td class="q">draft &rarr; active</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">2</td><td class="q">draft &rarr; terminated (cancel draft)</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">3</td><td class="q">active &rarr; expired (auto or manual?)</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">4</td><td class="q">active &rarr; terminated (early)</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">5</td><td class="q">expired &rarr; active (renewal)</td><td class="write"></td><td class="notes"></td></tr>
-      <tr><td class="num">6</td><td class="q">terminated &rarr; active (reinstate?)</td><td class="write"></td><td class="notes"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- SECTION E: Additional Questions -->
-<div class="section">
-  <div class="section-title">E &mdash; Additional Questions</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:22px">#</th>
-        <th style="text-align:left; padding-left:6px">Question</th>
-        <th style="width:180px">Answer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="num">1</td><td class="q">When lease activates, does unit occupancyStatus auto-update to "occupied"?&nbsp; Y / N</td><td class="write"></td></tr>
-      <tr><td class="num">2</td><td class="q">When lease terminates, does unit auto-update to "vacant"?&nbsp; Y / N</td><td class="write"></td></tr>
-      <tr><td class="num">3</td><td class="q">Can two active leases exist on the same unit at once?&nbsp; Y / N</td><td class="write"></td></tr>
-      <tr><td class="num">4</td><td class="q">When WO moves to in_progress, does tenant get notified?&nbsp; Y / N</td><td class="write"></td></tr>
-      <tr><td class="num">5</td><td class="q">WO completed: manager must confirm/close OR auto-close after N days?&nbsp; CONFIRM / AUTO</td><td class="write"></td></tr>
-      <tr><td class="num">6</td><td class="q">If auto-close: how many days?</td><td class="write"></td></tr>
-      <tr><td class="num">7</td><td class="q"><em>Add your own:</em></td><td class="write"></td></tr>
-    </tbody>
-  </table>
+<div class="footer">
+  <span>Print date: <span class="line"></span></span>
+  <span>Filled by: <span class="line"></span></span>
+  <span><em>Scan and share with Claude &rarr; STATUS-TRANSITIONS-001.md</em></span>
 </div>
 
 </body>
