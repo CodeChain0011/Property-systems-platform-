@@ -1,10 +1,16 @@
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+
+@Injectable()
 export class DatabaseService {
-  getStatus() {
-    return {
-      database: 'configured',
-      provider: 'postgresql',
-      orm: 'prisma',
-      note: 'Live migrations deferred because Prisma schema engine is limited on Android Termux.',
-    };
+  constructor(private readonly prisma: PrismaService) {}
+
+  async getStatus() {
+    try {
+      await this.prisma.$queryRaw`SELECT 1`;
+      return { database: 'connected', provider: 'postgresql', orm: 'prisma' };
+    } catch {
+      return { database: 'disconnected', provider: 'postgresql', orm: 'prisma' };
+    }
   }
 }

@@ -3,14 +3,14 @@ import { DatabaseService } from '../database/database.service';
 
 @Controller('health')
 export class HealthController {
-  private readonly databaseService = new DatabaseService();
+  constructor(private readonly databaseService: DatabaseService) {}
 
   @Get()
-  getHealth() {
+  async getHealth() {
     return {
       status: 'ok',
       service: 'property-operating-system-api',
-      database: this.databaseService.getStatus(),
+      database: await this.databaseService.getStatus(),
     };
   }
 }

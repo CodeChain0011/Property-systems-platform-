@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Query } from '@nestjs/common';
 import { WorkOrdersService } from './work-orders.service';
 
 @Controller('work-orders')
@@ -6,26 +6,22 @@ export class WorkOrdersController {
   constructor(private readonly workOrdersService: WorkOrdersService) {}
 
   @Get()
-  findAll() {
-    return { data: this.workOrdersService.findAll() };
+  async findAll(@Query('organizationId') organizationId?: string) {
+    return { data: await this.workOrdersService.findAll(organizationId) };
   }
 
   @Get('summary')
-  getSummary() {
-    return { data: this.workOrdersService.getSummary() };
+  async getSummary(@Query('organizationId') organizationId?: string) {
+    return { data: await this.workOrdersService.getSummary(organizationId) };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    const workOrder = this.workOrdersService.findOne(id);
-    if (!workOrder) {
-      return { error: 'Work order not found' };
-    }
-    return { data: workOrder };
+  async findOne(@Param('id') id: string) {
+    return { data: await this.workOrdersService.findOne(id) };
   }
 
   @Post()
-  create(@Body() body: Parameters<WorkOrdersService['create']>[0]) {
-    return { data: this.workOrdersService.create(body) };
+  async create(@Body() body: Parameters<WorkOrdersService['create']>[0]) {
+    return { data: await this.workOrdersService.create(body) };
   }
 }

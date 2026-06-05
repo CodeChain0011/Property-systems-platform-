@@ -6,27 +6,26 @@ export class LeasesController {
   constructor(private readonly leasesService: LeasesService) {}
 
   @Get()
-  findAll() {
-    return { data: this.leasesService.findAll() };
+  async findAll(@Query('organizationId') organizationId?: string) {
+    return { data: await this.leasesService.findAll(organizationId) };
   }
 
   @Get('expiring')
-  getExpiring(@Query('days') days?: string) {
+  async getExpiring(
+    @Query('days') days?: string,
+    @Query('organizationId') organizationId?: string,
+  ) {
     const withinDays = days ? parseInt(days, 10) : 60;
-    return { data: this.leasesService.getExpiringLeases(withinDays) };
+    return { data: await this.leasesService.getExpiringLeases(withinDays, organizationId) };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    const lease = this.leasesService.findOne(id);
-    if (!lease) {
-      return { error: 'Lease not found' };
-    }
-    return { data: lease };
+  async findOne(@Param('id') id: string) {
+    return { data: await this.leasesService.findOne(id) };
   }
 
   @Post()
-  create(@Body() body: Parameters<LeasesService['create']>[0]) {
-    return { data: this.leasesService.create(body) };
+  async create(@Body() body: Parameters<LeasesService['create']>[0]) {
+    return { data: await this.leasesService.create(body) };
   }
 }
