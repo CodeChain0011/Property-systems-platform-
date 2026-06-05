@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
 import { HealthController } from './health/health.controller';
 import { DatabaseService } from './database/database.service';
 import { OrganizationsController } from './organizations/organizations.controller';
@@ -13,7 +14,7 @@ import { LeasesController } from './leases/leases.controller';
 import { LeasesService } from './leases/leases.service';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule, AuthModule],
   controllers: [
     AppController,
     HealthController,
