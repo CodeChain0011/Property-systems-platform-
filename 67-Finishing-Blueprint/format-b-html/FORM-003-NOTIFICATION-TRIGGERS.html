@@ -5,28 +5,45 @@
 <title>Form 003 – Notification Trigger Map</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; }
-@page { size: letter portrait; margin: 0.75in; }
-h1 { font-size: 13pt; font-weight: bold; }
-h2 { font-size: 11pt; margin: 14px 0 6px; border-bottom: 2px solid #000; padding-bottom: 3px; }
-.header { border: 2px solid #000; padding: 8px 12px; margin-bottom: 14px; }
-.header-sub { font-size: 10pt; color: #333; margin-top: 2px; }
-.instructions { background: #f5f5f5; border: 1px solid #999; padding: 8px 10px; margin-bottom: 14px; font-size: 9pt; }
-.role-key { margin-top: 5px; font-size: 8.5pt; }
-.role-key span { display: inline-block; background: #e8e8e8; border: 1px solid #bbb; padding: 1px 5px; margin: 2px 3px 2px 0; font-family: monospace; }
-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
-th { background: #ddd; border: 1px solid #000; padding: 4px 4px; text-align: center; font-size: 8.5pt; font-weight: bold; }
-td { border: 1px solid #000; padding: 5px 6px; vertical-align: top; font-size: 9pt; }
-td.event { background: #f5f5f5; font-weight: bold; width: 22%; }
-td.roles { width: 22%; font-size: 8.5pt; line-height: 1.8; }
-td.channel { width: 20%; font-size: 8.5pt; line-height: 1.8; }
-td.timing { width: 14%; }
-td.content { width: 22%; }
-.circle-options { color: #333; }
-.page-break { page-break-before: always; padding-top: 10px; }
-.notes-box { border: 1px solid #000; min-height: 80px; padding: 6px; margin-bottom: 14px; }
-.footer { margin-top: 24px; border-top: 1px solid #000; padding-top: 8px; font-size: 8.5pt; display: flex; justify-content: space-between; }
-.line { display: inline-block; width: 160px; border-bottom: 1px solid #000; margin-left: 4px; }
+body { font-family: Arial, sans-serif; font-size: 9pt; color: #000; background: #fff; }
+@page { size: letter portrait; margin: 0.65in; }
+
+h1 { font-size: 12pt; font-weight: bold; }
+h2 { font-size: 10pt; margin: 12px 0 5px; border-bottom: 2px solid #000; padding-bottom: 2px; }
+
+.header { border: 2px solid #000; padding: 7px 10px; margin-bottom: 12px; }
+.header-sub { font-size: 9.5pt; color: #333; margin-top: 2px; }
+
+.instructions { background: #f5f5f5; border: 1px solid #aaa; padding: 7px 10px; margin-bottom: 12px; font-size: 8.5pt; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 5px; }
+.legend span { font-weight: bold; }
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 8.5pt; }
+
+/* Group headers */
+th.group { background: #555; color: #fff; text-align: center; border: 1px solid #000; padding: 3px 2px; font-size: 8pt; letter-spacing: 0.5px; }
+
+/* Column headers */
+th.col-label { background: #ddd; border: 1px solid #000; padding: 3px 1px; text-align: center; font-size: 7.5pt; font-weight: bold; vertical-align: bottom; white-space: nowrap; }
+th.col-label.event { text-align: left; padding-left: 4px; font-size: 8.5pt; }
+th.col-label.wide { text-align: left; padding-left: 4px; }
+
+/* Data cells */
+td { border: 1px solid #000; vertical-align: middle; }
+td.event-name { padding: 5px 6px; font-size: 8.5pt; background: #f9f9f9; }
+td.check { text-align: center; padding: 0; height: 28px; }
+td.write { padding: 4px 5px; }
+td.prefs-q { padding: 5px 6px; background: #f9f9f9; }
+td.prefs-a { padding: 4px 6px; height: 30px; }
+
+/* Alternating rows */
+tr:nth-child(even) td.event-name { background: #f0f0f0; }
+tr:nth-child(even) td.check { background: #f8f8f8; }
+
+.page-break { page-break-before: always; padding-top: 8px; }
+.notes-box { border: 1px solid #000; min-height: 70px; padding: 6px; margin-bottom: 12px; }
+.footer { margin-top: 20px; border-top: 1px solid #000; padding-top: 7px; font-size: 8pt; display: flex; justify-content: space-between; }
+.line { display: inline-block; width: 150px; border-bottom: 1px solid #000; margin-left: 4px; }
 </style>
 </head>
 <body>
@@ -38,93 +55,163 @@ td.content { width: 22%; }
 </div>
 
 <div class="instructions">
-  <strong>How to use each row:</strong>
-  <ol style="margin-left:16px;margin-top:4px;">
-    <li><strong>Notify</strong> — circle the roles that receive a notification</li>
-    <li><strong>Channel</strong> — circle one or more: EMAIL &nbsp; IN-APP &nbsp; PUSH &nbsp; SMS &nbsp; NONE</li>
-    <li><strong>Timing</strong> — write: IMMEDIATE / DAILY DIGEST / or a delay (e.g. &ldquo;1 day before&rdquo;)</li>
-    <li><strong>Content note</strong> — one line describing what the notification says</li>
-  </ol>
-  <div class="role-key" style="margin-top:5px;">
-    <span>OWN = Owner/Admin</span><span>PM = Property Manager</span><span>LA = Leasing Agent</span>
-    <span>MC = Maint. Coord.</span><span>TEN = Tenant</span><span>VEN = Vendor</span>
+  <strong>How to fill:</strong> For each event row, place a tick or circle in the columns that apply.
+  <div class="legend">
+    <span>Notify columns</span> &mdash; tick each role that should receive a notification &nbsp;&nbsp;
+    <span>Channel columns</span> &mdash; tick EMAIL, IN-APP, PUSH, and/or SMS &nbsp;&nbsp;
+    <span>Timing</span> &mdash; write IMMEDIATE, DAILY DIGEST, or a delay (e.g. &ldquo;3 days before&rdquo;) &nbsp;&nbsp;
+    <span>Content Note</span> &mdash; one line describing what the message says
   </div>
 </div>
 
+<!-- ==================== SECTION A ==================== -->
 <h2>SECTION A &mdash; LEASE EVENTS</h2>
 <table>
-  <thead><tr><th style="text-align:left">Event</th><th>Notify (circle roles)</th><th>Channel (circle)</th><th>Timing</th><th>Content Note</th></tr></thead>
+  <thead>
+    <tr>
+      <th class="col-label event" rowspan="2" style="width:20%">Event</th>
+      <th class="group" colspan="6">NOTIFY &mdash; tick roles</th>
+      <th class="group" colspan="4">CHANNEL &mdash; tick all that apply</th>
+      <th class="col-label wide" rowspan="2" style="width:10%">Timing</th>
+      <th class="col-label wide" rowspan="2" style="width:18%">Content Note</th>
+    </tr>
+    <tr>
+      <th class="col-label" style="width:5%">OWN</th>
+      <th class="col-label" style="width:5%">PM</th>
+      <th class="col-label" style="width:5%">LA</th>
+      <th class="col-label" style="width:5%">MC</th>
+      <th class="col-label" style="width:5%">TEN</th>
+      <th class="col-label" style="width:5%">VEN</th>
+      <th class="col-label" style="width:6%">EMAIL</th>
+      <th class="col-label" style="width:6%">IN-APP</th>
+      <th class="col-label" style="width:5%">PUSH</th>
+      <th class="col-label" style="width:5%">SMS</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td class="event">Lease created (draft)</td><td class="roles"><span class="circle-options">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</span></td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Lease activated</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Lease expiring in 90 days</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Lease expiring in 60 days</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Lease expiring in 30 days</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Lease expired</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Lease terminated early</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
+    <tr><td class="event-name">Lease created (draft)</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Lease activated</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Lease expiring in 90 days</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Lease expiring in 60 days</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Lease expiring in 30 days</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Lease expired</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Lease terminated early</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
   </tbody>
 </table>
 
+<!-- ==================== SECTION B ==================== -->
 <h2>SECTION B &mdash; RENT &amp; PAYMENT EVENTS</h2>
 <table>
-  <thead><tr><th style="text-align:left">Event</th><th>Notify (circle roles)</th><th>Channel (circle)</th><th>Timing</th><th>Content Note</th></tr></thead>
+  <thead>
+    <tr>
+      <th class="col-label event" rowspan="2" style="width:20%">Event</th>
+      <th class="group" colspan="6">NOTIFY &mdash; tick roles</th>
+      <th class="group" colspan="4">CHANNEL &mdash; tick all that apply</th>
+      <th class="col-label wide" rowspan="2" style="width:10%">Timing</th>
+      <th class="col-label wide" rowspan="2" style="width:18%">Content Note</th>
+    </tr>
+    <tr>
+      <th class="col-label" style="width:5%">OWN</th><th class="col-label" style="width:5%">PM</th><th class="col-label" style="width:5%">LA</th><th class="col-label" style="width:5%">MC</th><th class="col-label" style="width:5%">TEN</th><th class="col-label" style="width:5%">VEN</th>
+      <th class="col-label" style="width:6%">EMAIL</th><th class="col-label" style="width:6%">IN-APP</th><th class="col-label" style="width:5%">PUSH</th><th class="col-label" style="width:5%">SMS</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td class="event">Rent due reminder</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Rent payment received</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Rent payment late</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Rent payment failed</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Security deposit released</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
+    <tr><td class="event-name">Rent due reminder</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Rent payment received</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Rent payment late</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Rent payment failed</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Security deposit released</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
   </tbody>
 </table>
 
 <div class="page-break">
+<!-- ==================== SECTION C ==================== -->
 <h2>SECTION C &mdash; WORK ORDER / MAINTENANCE EVENTS</h2>
 <table>
-  <thead><tr><th style="text-align:left">Event</th><th>Notify (circle roles)</th><th>Channel (circle)</th><th>Timing</th><th>Content Note</th></tr></thead>
+  <thead>
+    <tr>
+      <th class="col-label event" rowspan="2" style="width:20%">Event</th>
+      <th class="group" colspan="6">NOTIFY &mdash; tick roles</th>
+      <th class="group" colspan="4">CHANNEL &mdash; tick all that apply</th>
+      <th class="col-label wide" rowspan="2" style="width:10%">Timing</th>
+      <th class="col-label wide" rowspan="2" style="width:18%">Content Note</th>
+    </tr>
+    <tr>
+      <th class="col-label" style="width:5%">OWN</th><th class="col-label" style="width:5%">PM</th><th class="col-label" style="width:5%">LA</th><th class="col-label" style="width:5%">MC</th><th class="col-label" style="width:5%">TEN</th><th class="col-label" style="width:5%">VEN</th>
+      <th class="col-label" style="width:6%">EMAIL</th><th class="col-label" style="width:6%">IN-APP</th><th class="col-label" style="width:5%">PUSH</th><th class="col-label" style="width:5%">SMS</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td class="event">Work order created</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Work order assigned (vendor assigned)</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Work order scheduled (date confirmed)</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Work order in progress</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Work order completed</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Work order cancelled</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Emergency WO created (priority = emergency)</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">WO unassigned for N days<br>N&nbsp;=&nbsp;_______</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
+    <tr><td class="event-name">Work order created</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Work order assigned (vendor assigned)</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Work order scheduled (date confirmed)</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Work order in progress</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Work order completed</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Work order cancelled</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Emergency WO created (priority = emergency)</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">WO unassigned for N days &nbsp;(N&nbsp;=&nbsp;______)</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
   </tbody>
 </table>
 
+<!-- ==================== SECTION D ==================== -->
 <h2>SECTION D &mdash; TENANT &amp; MOVE EVENTS</h2>
 <table>
-  <thead><tr><th style="text-align:left">Event</th><th>Notify (circle roles)</th><th>Channel (circle)</th><th>Timing</th><th>Content Note</th></tr></thead>
+  <thead>
+    <tr>
+      <th class="col-label event" rowspan="2" style="width:20%">Event</th>
+      <th class="group" colspan="6">NOTIFY &mdash; tick roles</th>
+      <th class="group" colspan="4">CHANNEL &mdash; tick all that apply</th>
+      <th class="col-label wide" rowspan="2" style="width:10%">Timing</th>
+      <th class="col-label wide" rowspan="2" style="width:18%">Content Note</th>
+    </tr>
+    <tr>
+      <th class="col-label" style="width:5%">OWN</th><th class="col-label" style="width:5%">PM</th><th class="col-label" style="width:5%">LA</th><th class="col-label" style="width:5%">MC</th><th class="col-label" style="width:5%">TEN</th><th class="col-label" style="width:5%">VEN</th>
+      <th class="col-label" style="width:6%">EMAIL</th><th class="col-label" style="width:6%">IN-APP</th><th class="col-label" style="width:5%">PUSH</th><th class="col-label" style="width:5%">SMS</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td class="event">Tenant account created</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Move-in confirmed</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Move-out notice given</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Move-out completed</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event">Document shared with tenant</td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
+    <tr><td class="event-name">Tenant account created</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Move-in confirmed</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Move-out notice given</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Move-out completed</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name">Document shared with tenant</td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="page-break">
-<h2>SECTION E &mdash; ADDITIONAL EVENTS (write your own)</h2>
+<!-- ==================== SECTION E ==================== -->
+<h2>SECTION E &mdash; ADDITIONAL EVENTS &nbsp;<small style="font-weight:normal;font-size:8pt">(write your own)</small></h2>
 <table>
-  <thead><tr><th style="text-align:left">Event</th><th>Notify (circle roles)</th><th>Channel (circle)</th><th>Timing</th><th>Content Note</th></tr></thead>
+  <thead>
+    <tr>
+      <th class="col-label event" rowspan="2" style="width:20%">Event</th>
+      <th class="group" colspan="6">NOTIFY &mdash; tick roles</th>
+      <th class="group" colspan="4">CHANNEL &mdash; tick all that apply</th>
+      <th class="col-label wide" rowspan="2" style="width:10%">Timing</th>
+      <th class="col-label wide" rowspan="2" style="width:18%">Content Note</th>
+    </tr>
+    <tr>
+      <th class="col-label" style="width:5%">OWN</th><th class="col-label" style="width:5%">PM</th><th class="col-label" style="width:5%">LA</th><th class="col-label" style="width:5%">MC</th><th class="col-label" style="width:5%">TEN</th><th class="col-label" style="width:5%">VEN</th>
+      <th class="col-label" style="width:6%">EMAIL</th><th class="col-label" style="width:6%">IN-APP</th><th class="col-label" style="width:5%">PUSH</th><th class="col-label" style="width:5%">SMS</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td class="event" style="height:40px"></td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event" style="height:40px"></td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
-    <tr><td class="event" style="height:40px"></td><td class="roles">OWN &nbsp; PM &nbsp; LA<br>MC &nbsp; TEN &nbsp; VEN</td><td class="channel">EMAIL &nbsp; IN-APP<br>PUSH &nbsp; SMS<br>NONE</td><td class="timing"></td><td class="content"></td></tr>
+    <tr><td class="event-name" style="height:36px"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name" style="height:36px"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
+    <tr><td class="event-name" style="height:36px"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="check"></td><td class="write"></td><td class="write"></td></tr>
   </tbody>
 </table>
 
+<!-- ==================== SECTION F ==================== -->
 <h2>SECTION F &mdash; GLOBAL NOTIFICATION PREFERENCES</h2>
 <table>
-  <thead><tr><th style="text-align:left;width:65%">Question</th><th>Your Answer</th></tr></thead>
+  <thead><tr><th style="background:#ddd;border:1px solid #000;padding:4px 6px;text-align:left;width:62%">Question</th><th style="background:#ddd;border:1px solid #000;padding:4px 6px;text-align:left">Your Answer</th></tr></thead>
   <tbody>
-    <tr><td>Can tenants opt out of non-critical notifications? &nbsp;<strong>Y / N</strong></td><td style="height:30px"></td></tr>
-    <tr><td>Are emergency WO notifications always forced (no opt-out)? &nbsp;<strong>Y / N</strong></td><td style="height:30px"></td></tr>
-    <tr><td>Default notification channel if user has no preference set: (circle one) &nbsp;<strong>EMAIL &nbsp; IN-APP &nbsp; PUSH &nbsp; SMS</strong></td><td style="height:30px"></td></tr>
-    <tr><td>Should managers receive a daily digest instead of individual alerts for low-priority events? &nbsp;<strong>Y / N</strong></td><td style="height:30px"></td></tr>
+    <tr><td class="prefs-q">Can tenants opt out of non-critical notifications? &nbsp;<strong>Y / N</strong></td><td class="prefs-a"></td></tr>
+    <tr><td class="prefs-q">Are emergency WO notifications always forced (no opt-out)? &nbsp;<strong>Y / N</strong></td><td class="prefs-a"></td></tr>
+    <tr><td class="prefs-q">Default channel when user has no preference set: (circle one) &nbsp;<strong>EMAIL &nbsp; IN-APP &nbsp; PUSH &nbsp; SMS</strong></td><td class="prefs-a"></td></tr>
+    <tr><td class="prefs-q">Should managers get a daily digest instead of individual alerts for low-priority events? &nbsp;<strong>Y / N</strong></td><td class="prefs-a"></td></tr>
   </tbody>
 </table>
 </div>
